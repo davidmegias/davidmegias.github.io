@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<script src="https://peterolson.github.io/BigInteger.js/BigInteger.min.js">
-</script>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style>
+		.wrapper {max-width: 25rem; margin: 4rem auto;}		
+		.hidden {display: none;}
+	</style>
 </head>
-
 <body>
-<p>
-  Introdueix el teu NIU:
-  <input type="text" id="txt1" name="text1">
-
-</p>
-<p>
-  Prem el bot&oacute; per calcular la teva clau:
-  <button onclick="myFunction()">Obtenir clau</button>
-</p>
-<p>La teva clau &eacute;s la seg&uuml;ent:</p>
-<p id="demo"></p>
+	<div class="wrapper">
+		<form onsubmit="event.preventDefault(); getKey();">
+		  <div class="form-group">
+			<label for="niu">Introdueix el teu NIU:</label>
+			<input type="text" class="form-control" id="niu" placeholder="ex: 25687964">
+		  </div>
+		  <button type="submit" class="btn btn-primary">Obtenir la clau</button>
+		</form>
+		<div id="key" class="hidden">
+			<hr/>
+			<p>La teva clau &eacute;s la seg&uuml;ent:</p>
+			<p id="keyResult"></p>
+		</div>
+	</div>
+	<script  type="text/javascript" src="https://peterolson.github.io/BigInteger.js/BigInteger.min.js"></script>
+	<script>
+		function getKey() {
+		  var y = document.getElementById("niu").value;
+		  var x =bigInt(y).multiply(48271);
+		  var x=x.mod(2147483647); 
+		  var x=x.mod(10000000); 
+		  document.getElementById("keyResult").innerHTML = x;
+		  document.getElementById("key").classList.remove("hidden");
+		}
+	</script>
 </body>
-<script>
-function myFunction() {
-  var y = document.getElementById("txt1").value;
-  var x =bigInt(y).multiply(48271);
-  var x=x.mod(2147483647); 
-  var x=x.mod(10000000); 
- //(((+y)*48271)%(2**31-1))%100000000;
-  //var z = document.getElementById("txt2").value;
-  //var x = y+"n";
-  //console.log(x);
-  document.getElementById("demo").innerHTML = x;
-}
-</script>
-
 </html>
