@@ -4,19 +4,8 @@
 <head>
 <script src="http://peterolson.github.com/BigInteger.js/BigInteger.min.js">
 </script>
-<script>
-function myFunction() {
-  var y = document.getElementById("txt1").value;
-  var x =bigInt(y).multiply(48271);
-  var x=x.mod(2147483647); 
-  var x=x.mod(10000000); 
- //(((+y)*48271)%(2**31-1))%100000000;
-  //var z = document.getElementById("txt2").value;
-  //var x = y+"n";
-  document.getElementById("demo").innerHTML = x;
-}
-</script>
 </head>
+
 <body>
 <p>
   Introdueix el teu NIU:
@@ -30,4 +19,18 @@ function myFunction() {
 <p>La teva clau &eacute;s la seg&uuml;ent:</p>
 <p id="demo"></p>
 </body>
+<script>
+function myFunction() {
+  var y = document.getElementById("txt1").value;
+  var x =bigInt(y).multiply(48271);
+  var x=x.mod(2147483647); 
+  var x=x.mod(10000000); 
+ //(((+y)*48271)%(2**31-1))%100000000;
+  //var z = document.getElementById("txt2").value;
+  //var x = y+"n";
+  //console.log(x);
+  document.getElementById("demo").innerHTML = x;
+}
+</script>
+
 </html>
